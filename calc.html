@@ -1,0 +1,130 @@
+<style>
+.screen {height:50; width:350; font-size:30; text-align:right; color:white; background-color:black; border-color:white}
+.btn {height:40; width:50; font-size:25; color:white; background-color:black;}
+.btn:hover {color:cyan}
+</style>
+<center>
+<table border="1" style=background-color:grey;>
+<tr>
+<td colspan="6"> <input id=t1 class=screen ></td></tr>
+<tr>
+<td><span id=s1 style=color:red;font-size:20></span>
+<td> <input type="button" value="C" class="btn" onclick=clear2()></td>
+<td> <input type="button" value="CE" class="btn" onclick=clearerror()></td>
+<td colspan=3> <input type="button" value="Backspace" class="btn" style=width:170 onclick=bkspace()></td></tr>
+<tr>
+<tr><td> <input type="button" value="MS" class="btn" onclick=ms()></td>
+<td> <input type="button" value="7" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="8" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="9" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="/" class="btn" onclick=op(this) ></td>
+<td> <input type="button" value="sqrt" class="btn" onclick=sqrt() ></td>
+</tr>
+<tr>
+<tr><td> <input type="button" value="M+" class="btn" onclick=mp()></td>
+<td> <input type="button" value="4" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="5" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="6" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="*" class="btn" onclick=op(this) ></td>
+<td> <input type="button" value="1/x" class="btn" onclick=onebyx() ></td>
+</tr>
+<tr>
+<tr><td> <input type="button" value="MR" class="btn" onclick=mr()></td>
+<td> <input type="button" value="1" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="2" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="3" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="-" class="btn" onclick=op(this) ></td>
+<td> <input type="button" value="+/-" class="btn" onclick=pm() ></td>
+</tr>
+<tr>
+<tr><td> <input type="button" value="Mc" class="btn" onclick=mc()></td>
+<td> <input type="button" value="0" class="btn" onclick=digit(this) ></td>
+<td> <input type="button" value="." class="btn" onclick=pt() ></td>
+<td> <input type="button" value="+" class="btn" onclick=op(this) ></td>
+<td> <input type="button" value="=" class="btn" onclick=eql(this) ></td>
+<td> <input type="button" value="%" class="btn" onclick=percent() ></td>
+</tr>
+</table>
+<script>
+var a,b,c,o,m;
+function digit(n)
+{
+t1.value += n.value;
+}
+function op(n)
+{
+o=n.value;
+a=parseFloat(t1.value);
+t1.value="";
+}
+function eql(n)
+{
+b=parseFloat(t1.value);
+switch(o)
+{
+case "+" : c=a+b; break;
+case "-" : c=a-b; break;
+case "*" : c=a*b; break;
+case "/" : c=a/b; break;
+}
+t1.value=c;
+}
+function clear2()
+{
+a=0
+t1.value="";
+}
+function clearerror()
+{
+t1.value="";
+}
+function bkspace()
+{
+x=t1.value;
+y=x.substring(0 , x.length -1)
+t1.value=y;
+}
+function ms()
+{
+m=parseFloat(t1.value);
+s1.innerHTML=m
+}
+function mc()
+{
+m=0
+s1.innerHTML=""
+}
+function mp()
+{
+m += parsefloat(t1.value);
+s1.innerHTML=m
+}
+function mr()
+{
+t1.value=m
+s1.innerHTML=m
+}
+function sqrt()
+{
+x=parseFloat(t1.value)
+t1.value=Math.sqrt(x)
+}
+function onebyx()
+{
+x=parseFloat(t1.value)
+t1.value=(1/x)
+}
+function pm()
+{
+t1.value=t1.value * -1
+}
+function percent()
+{
+b=parseFloat(t1.value)
+if(o=="*")
+t1.value=(a/100)*b
+}
+
+</script>
+
+    
